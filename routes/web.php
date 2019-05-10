@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    phpinfo();
 });
+
+// 凯撒加密
+Route::get('index','Controller\UserController@index');
+
+// 对称加密
+Route::get('encrypt','Controller\UserController@encrypt');
+
+// 非对称加密
+Route::get('enc','Controller\UserController@keyEncrypt');
