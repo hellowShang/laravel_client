@@ -63,7 +63,7 @@ class UserController extends Controller
         // 数据
         $data = [
             'name'      =>  '啦啦啦',
-            'email'     =>  'zhangsiwu@qq.com',
+            'email'     =>  'lalala@qq.com',
             'num'       =>  '63456829938249293859823',
             'tel'       =>  '17898237764'
         ];
@@ -119,6 +119,31 @@ class UserController extends Controller
 
     // 签名
     public function sign(){
-        
+        // 数据
+        $data = [
+            'name'      =>  '沙雕',
+            'email'     =>  'shadiao@qq.com',
+            'num'       =>  '63456829938249293859823',
+            'tel'       =>  '17898237764'
+        ];
+
+        // 转化成json字符串
+        $json_str = json_encode($data,JSON_UNESCAPED_UNICODE);
+
+        // 获取私钥
+        $key = openssl_get_privatekey('file://'.storage_path('app/keys/private.pem'));
+
+        // 签名
+        openssl_sign($json_str,$sign,$key);
+
+        // 转码成base64
+        $encrypt_str = base64_encode($sign);
+
+        // 请求路由
+        $url = 'http://api.1809a.com/user/sign?sign='.urlencode($encrypt_str);
+
+        // curl发送请求
+        curl($url,$json_str);
     }
 }
+

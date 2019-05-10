@@ -23,3 +23,6 @@ Route::get('encrypt','Controller\UserController@encrypt');
 
 // 非对称加密
 Route::get('enc','Controller\UserController@keyEncrypt');
+
+// 签名
+Route::get('sign','Controller\UserController@sign');
