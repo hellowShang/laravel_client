@@ -1,4 +1,6 @@
 <?php
+
+// curl  post发送数据
 function curl($url,$encrypt_str){
     // 1. 初始化
     $ch = curl_init();

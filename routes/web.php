@@ -26,3 +26,12 @@ Route::get('enc','Controller\UserController@keyEncrypt');
 
 // 签名
 Route::get('sign','Controller\UserController@sign');
+
+// 测试
+// 用户注册
+Route::get('reg','Controller\TestController@reg');
+Route::post('register','Controller\TestController@register');
+
+// 登录
+Route::get('login','Controller\TestController@login');
+Route::post('loginDo','Controller\TestController@loginDo');
