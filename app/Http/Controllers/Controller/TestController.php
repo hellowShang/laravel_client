@@ -17,6 +17,8 @@ class TestController extends Controller
 
     // 注册执行
     public function register(){
+            header('Access-Control-Allow-Origin:http://127.0.0.1:8020');
+
             $data = request()->all();
             if($data['pass1'] != $data['pass2']){
                 die('两次密码输入不一致');
@@ -36,7 +38,10 @@ class TestController extends Controller
             $b64_str = base64_encode($encrypt);
             $url = 'http://api.1809a.com/reg';
             $str = curl($url,$b64_str);
-            var_dump($str);
+            $arr = json_decode($str,true);
+            if($arr['errcode'] == 0){
+                die($arr['msg']);
+            }
     }
 
     // 登录
